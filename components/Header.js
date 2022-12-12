@@ -12,12 +12,14 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import Secondicon from 'react-native-vector-icons/FontAwesome'
 import { Button, Snackbar,IconButton } from 'react-native-paper';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { useNavigation } from '@react-navigation/native';
 
 
 const Header = ({item}) => {
   const isDarkMode = useColorScheme() === 'dark';
   const wdth = useWindowDimensions().width;
   const hgt = useWindowDimensions().height;
+  const navigation = useNavigation();
 //   const imagelink =
 //     'https://avatars.dicebear.com/v2/avataaars/{{' +
 //     item.username +
@@ -100,7 +102,9 @@ const onHandleLike = () => {
 
        
         
-        <IconButton icon="send-outline" size={25} animated />
+        <IconButton icon="send-outline" 
+      
+        size={25} animated />
 
         {/* <Icon name="rocket" size={30} color="#900" />
         <Text style={{color:'white',fontSize:20}}>Share</Text> */}

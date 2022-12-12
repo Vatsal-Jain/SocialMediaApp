@@ -1,35 +1,45 @@
 import * as React from 'react';
-import { View, Text } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Post from '../components/postscreen';
-import 'react-native-gesture-handler'
+import Instagram from '../components/Instagram';
 
-function HomeScreen() {
-    return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text>Home Screen</Text>
-      </View>
-    );
-  }
-  const Stack = createNativeStackNavigator();
+import Discover from '../screens/discover';
+import Add from '../screens/add';
+
+const Stack = createNativeStackNavigator();
 
 const RootNavigation = () => {
-    
   return (
     <NavigationContainer>
-    <Stack.Navigator initialRouteName="second">
-   <Stack.Screen name='first' component={Post} 
-   options={{ title: 'Overview' }}
-   />
-    <Stack.Screen name="second" component={HomeScreen} 
-    options={{ title: 'Overview' }}
-    />
-   
- </Stack.Navigator> 
- </NavigationContainer>
+      <Stack.Navigator initialRouteName="first">
+        <Stack.Screen
+          options={{header: () => <Instagram />}}
+          name="first"
+          component={Post}
+        />
+        <Stack.Screen
+          name="addscreen"
+          component={Add}
+          options={{
+            title: 'Add',
+            headerTintColor: 'white',
+            headerStyle: {backgroundColor: 'black'},
+          }}
+        />
 
-  )
-}
+        <Stack.Screen
+          name="discoverscreen"
+          component={Discover}
+          options={{
+            title: 'Discover',
+            headerTintColor: 'white',
+            headerStyle: {backgroundColor: 'black'},
+          }}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+};
 
-export default RootNavigation
+export default RootNavigation;
